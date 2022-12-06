@@ -11,7 +11,7 @@ on:
 env:
   AWS_REGION: ap-northeast-2
   ECR_REGISTRY: 425920741281.dkr.ecr.ap-northeast-2.amazonaws.com/edu # ecr_registry주소
-  ECR_REPOSITORY: ${{ env.IMAGE_NAME }} # repo주소
+  ECR_REPOSITORY: ${{ github.repository }} # repo주소
   #REGISTRY: ghcr.io
   #IMAGE_NAME: ${{ github.repository }}
   
