@@ -36,7 +36,7 @@ COPY --from=MAVEN_BUILD /build/target/dependency/* ${LAMBDA_TASK_ROOT}/lib/
 
 # ENTRYPOINT [ "/opt/java/openjdk/bin/java", "-cp", "/function/*", "com.amazonaws.services.lambda.runtime.api.client.AWSLambda" ]
 
-# ENTRYPOINT [ "sh", "-c", "java /function/*", "com.amazonaws.services.lambda.runtime.api.client.AWSLambda" ]
+ENTRYPOINT [ "sh", "-c", "java /function/*", "com.amazonaws.services.lambda.runtime.api.client.AWSLambda" ]
 
 # CMD ["de.rieckpil.blog.Java15Lambda::handleRequest"]
 
