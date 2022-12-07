@@ -10,9 +10,9 @@ COPY . ./
 RUN mvn package -DskipTests
 
 
- FROM eclipse-temurin:17.0.2_8-jre-alpine
+# FROM eclipse-temurin:17.0.2_8-jre-alpine
 
-# FROM public.ecr.aws/lambda/java:11
+ FROM public.ecr.aws/lambda/java:11
 
 # FROM  amazon/aws-lambda-java:latest
 # Copy function code and runtime dependencies from Maven layout
@@ -38,9 +38,11 @@ COPY --from=MAVEN_BUILD /build/target/dependency/* ${LAMBDA_TASK_ROOT}/lib/
 
 RUN ls -al ${LAMBDA_TASK_ROOT}
 
+RUN ls -al ${LAMBDA_TASK_ROOT}/lib/
+
 # ENTRYPOINT [ "/opt/java/openjdk/bin/java", "-cp", "/function/*", "com.amazonaws.services.lambda.runtime.api.client.AWSLambda" ]
 
-ENTRYPOINT [ "sh", "-c", "java /function/*", "com.amazonaws.services.lambda.runtime.api.client.AWSLambda" ]
+# ENTRYPOINT [ "sh", "-c", "java /function/*", "com.amazonaws.services.lambda.runtime.api.client.AWSLambda" ]
 
 # CMD ["de.rieckpil.blog.Java15Lambda::handleRequest"]
 
