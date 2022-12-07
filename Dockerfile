@@ -10,7 +10,7 @@ COPY . ./
 RUN mvn package
 
 
-FROM eclipse-temurin:17.0.2_8-jre-alpine
+# FROM eclipse-temurin:17.0.2_8-jre-alpine
 
 FROM public.ecr.aws/lambda/java:11
 
@@ -28,9 +28,10 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 ENV SPRING_PROFILES_ACTIVE dev
 
+RUN ls /build/target/
 
 COPY --from=MAVEN_BUILD /build/target/dependency/* /function/
-COPY --from=MAVEN_BUILD /build/target/java-aws-lambda-custom-image.jar /function
+COPY --from=MAVEN_BUILD /build/target/thirdproject.jar /function
 
 #ENTRYPOINT [ "/opt/java/openjdk/bin/java", "-cp", "/function/*", "com.amazonaws.services.lambda.runtime.api.client.AWSLambda" ]
 
