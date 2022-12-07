@@ -1,4 +1,6 @@
-FROM  maven:3.8.4-openjdk-17 AS MAVEN_BUILD
+# FROM  maven:3.8.4-openjdk-17 AS MAVEN_BUILD
+
+FROM maven:3.8-eclipse-temurin-11-alpine AS MAVEN_BUILD
 
 RUN mkdir -p build
 WORKDIR /build
