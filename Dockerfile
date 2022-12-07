@@ -28,16 +28,17 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 ENV SPRING_PROFILES_ACTIVE dev
 
-COPY --from=MAVEN_BUILD /build/target/dependency/* /function/
-COPY --from=MAVEN_BUILD /build/target/thirdproject.jar /function
+# COPY --from=MAVEN_BUILD /build/target/dependency/* /function/
+# COPY --from=MAVEN_BUILD /build/target/thirdproject.jar /function
 
-RUN ls /function
+COPY --from=MAVEN_BUILD /build/target/classes ${LAMBDA_TASK_ROOT}
+COPY --from=MAVEN_BUILD /build/target/dependency/* ${LAMBDA_TASK_ROOT}/lib/
 
-RUN ls /function/
+RUN ls -al /var/task
 
-#ENTRYPOINT [ "/opt/java/openjdk/bin/java", "-cp", "/function/*", "com.amazonaws.services.lambda.runtime.api.client.AWSLambda" ]
+# ENTRYPOINT [ "/opt/java/openjdk/bin/java", "-cp", "/function/*", "com.amazonaws.services.lambda.runtime.api.client.AWSLambda" ]
 
-ENTRYPOINT [ "sh", "-c", "java /function/*", "com.amazonaws.services.lambda.runtime.api.client.AWSLambda" ]
+# ENTRYPOINT [ "sh", "-c", "java /function/*", "com.amazonaws.services.lambda.runtime.api.client.AWSLambda" ]
 
 # CMD ["de.rieckpil.blog.Java15Lambda::handleRequest"]
 
