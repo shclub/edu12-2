@@ -6,7 +6,7 @@ RUN ls -al
 
 RUN pwd
 
-COPY target/classes ${LAMBDA_TASK_ROOT}
+COPY target/classes/* ${LAMBDA_TASK_ROOT}
 COPY target/dependency/* ${LAMBDA_TASK_ROOT}/lib/
 
 ENV TZ Asia/Seoul
