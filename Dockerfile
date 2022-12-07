@@ -7,7 +7,7 @@ COPY pom.xml ./
 COPY src ./src
 
 COPY . ./
-RUN mvn package
+RUN mvn package -DskipTests
 
 
  FROM eclipse-temurin:17.0.2_8-jre-alpine
