@@ -1,27 +1,13 @@
-#FROM shclub/build-tool:v1.0.0 as MAVEN_BUILD
-FROM  maven:3.8.4-openjdk-17 AS MAVEN_BUILD
+FROM public.ecr.aws/lambda/java:11.2022.12.02.20-x86_64
 
-RUN mkdir -p build
-WORKDIR /build
-
-COPY pom.xml ./
-COPY src ./src
-
-COPY . ./
-RUN mvn package
-
-
-FROM eclipse-temurin:17.0.2_8-jre-alpine
-
-COPY --from=MAVEN_BUILD /build/target/*.jar app.jar
+# Copy function code and runtime dependencies from Maven layout
+COPY target/classes ${LAMBDA_TASK_ROOT}
+COPY target/dependency/* ${LAMBDA_TASK_ROOT}/lib/
 
 ENV TZ Asia/Seoul
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 ENV SPRING_PROFILES_ACTIVE dev
 
-ENV JAVA_OPTS="-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=1 -XshowSettings:vm"
-ENV JAVA_OPTS="${JAVA_OPTS} -XX:+UseG1GC -XX:+UnlockDiagnosticVMOptions -XX:+G1SummarizeConcMark -XX:InitiatingHeapOccupancyPercent=35 -XX:G1ConcRefinementThreads=20"
-
-#ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar  app.jar "]
-ENTRYPOINT ["sh", "-c", "java -jar  app.jar "]
+# Set the CMD to your handler (could also be done as a parameter override outside of the Dockerfile)
+CMD [ "com.example.LambdaHandler::handleRequest" ]
