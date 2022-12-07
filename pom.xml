@@ -2,8 +2,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
  
-  <groupId>de.rieckpil.blog</groupId>
-  <artifactId>java-aws-lambda-custom-image</artifactId>
+  <groupId>com.kt.edu</groupId>
+  <artifactId>thirdproject</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
  
@@ -225,38 +225,13 @@
             <version>4.8.0</version>
             <scope>test</scope>
         </dependency>
-        <!-- Junit dependencies -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit.jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit.jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-params</artifactId>
-            <version>${junit.jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>uk.org.webcompere</groupId>
-            <artifactId>system-stubs-jupiter</artifactId>
-            <version>1.1.0</version>
-            <scope>test</scope>
-        </dependency>
+   
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>cloudformation</artifactId>
             <scope>test</scope>
             <version>2.18.16</version>
-        </dependency>	  
-	  
+        </dependency>	  	  
   </dependencies>
   <build>
     <finalName>${project.artifactId}</finalName>
