@@ -1,17 +1,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
- 
+  <parent>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-parent</artifactId>
+	<version>2.6.3</version>
+	<relativePath/> <!-- lookup parent from repository -->
+  </parent>
   <groupId>com.kt.edu</groupId>
   <artifactId>thirdproject</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
- 
   <properties>
-    <maven.compiler.source>15</maven.compiler.source>
-    <maven.compiler.target>15</maven.compiler.target>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <aws-lambda-java-runtime-interface-client.version>1.0.0</aws-lambda-java-runtime-interface-client.version>
+     <maven.compiler.source>17</maven.compiler.source>
+     <maven.compiler.target>17</maven.compiler.target>
+     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
  
   <dependencies>
@@ -19,15 +22,14 @@
     <dependency>
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-lambda-java-runtime-interface-client</artifactId>
-      <version>${aws-lambda-java-runtime-interface-client.version}</version>
-    </dependency>
- 
+      <version>1.0.0</version>
+    </dependency>  -->	  
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
       <version>5.7.0</version>
       <scope>test</scope>
-    </dependency> -->
+    </dependency> 
 	  
        <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -147,6 +149,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+	  
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>aws-crt-client</artifactId>
@@ -233,6 +236,7 @@
             <version>2.18.16</version>
         </dependency>	  	  
   </dependencies>
+	
   <build>
     <finalName>${project.artifactId}</finalName>
     <plugins>
