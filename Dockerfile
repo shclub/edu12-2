@@ -10,9 +10,9 @@ COPY . ./
 RUN mvn package
 
 
-# FROM eclipse-temurin:17.0.2_8-jre-alpine
+ FROM eclipse-temurin:17.0.2_8-jre-alpine
 
-FROM public.ecr.aws/lambda/java:11
+# FROM public.ecr.aws/lambda/java:11
 
 # FROM  amazon/aws-lambda-java:latest
 # Copy function code and runtime dependencies from Maven layout
