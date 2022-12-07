@@ -39,4 +39,4 @@ ENTRYPOINT [ "sh", "-c", "java /function/*", "com.amazonaws.services.lambda.runt
 # CMD ["de.rieckpil.blog.Java15Lambda::handleRequest"]
 
 # Set the CMD to your handler (could also be done as a parameter override outside of the Dockerfile)
-CMD [ "com.example.LambdaHandler::handleRequest" ]
+CMD [ "com.kt.edu.thirdproject.StreamLambdaHandler::handleRequest" ]
