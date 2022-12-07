@@ -3,12 +3,14 @@ FROM public.ecr.aws/lambda/java:11
 # FROM  amazon/aws-lambda-java:latest
 # Copy function code and runtime dependencies from Maven layout
 
+WORKDIR /build
+
 RUN ls -al
 
 RUN pwd
 
-COPY target/classes ${LAMBDA_TASK_ROOT}
-COPY target/dependency/* ${LAMBDA_TASK_ROOT}/lib/
+COPY /build/target/classes ${LAMBDA_TASK_ROOT}
+COPY /build/target/dependency/* ${LAMBDA_TASK_ROOT}/lib/
 
 ENV TZ Asia/Seoul
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
