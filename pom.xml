@@ -251,6 +251,17 @@
             <version>2.18.16</version>
         </dependency>	  	  
   </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>	
   <build>
     <finalName>${project.artifactId}</finalName>
     <plugins>
