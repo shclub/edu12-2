@@ -10,7 +10,7 @@ on:
         
 env:
   AWS_REGION: ap-northeast-2
-  ECR_REGISTRY: 425920741281.dkr.ecr.ap-northeast-2.amazonaws.com # ecr_registry 주소
+  ECR_REGISTRY: 383688778094.dkr.ecr.ap-northeast-2.amazonaws.com # ecr_registry 주소
   ECR_REPOSITORY: ${{ github.repository }} # repo 주소
   #REGISTRY: ghcr.io
   #IMAGE_NAME: ${{ github.repository }}
