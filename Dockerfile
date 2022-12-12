@@ -10,8 +10,12 @@ COPY src ./src
 
 COPY . ./
 RUN mvn package -DskipTests
-RUN echo "test"
+
+RUN echo "classes"
 RUN ls -al ./target/classes
+
+RUN echo "dependency"
+RUN ls -al ./target/dependency
 
 
 # FROM eclipse-temurin:17.0.2_8-jre-alpine
